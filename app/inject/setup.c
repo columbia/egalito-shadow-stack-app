@@ -10,6 +10,8 @@ void egalito_allocate_shadow_stack(void) {
     // use %rsp-0xb00000 and hit accessible memory.
     //
     // This function is injected by compiling it to a separate shared library.
+    // A call should be added to the target binary by finishing the exercise in
+    // ShadowStackPass::addStackAllocationHook().
     int dummyStackVar = 0xdeadbeef;
     void *dummyStackAddr = (void *)((((unsigned long)&dummyStackVar)
         & ~0xfff) - 0x1000 - 2*SHADOW_STACK_SIZE);

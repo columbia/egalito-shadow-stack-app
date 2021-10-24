@@ -43,10 +43,13 @@ void ShadowStackPass::addStackAllocationHook(Program *program) {
     auto hook = makeStackAllocationCall(allocateFunc);
 
     auto block1 = sourceFunc->getChildren()->getIterable()->get(0);
-    {
-        ChunkMutator m(block1, true);
-        m.prepend(hook);
-    }
+
+    // EXERCISE: Add call to egalito_allocate_shadow_stack by uncommenting the
+    // code below:
+    //{
+    //    ChunkMutator m(block1, true);
+    //    m.prepend(hook);
+    //}
 }
 
 Instruction *ShadowStackPass::makeStackAllocationCall(Function *allocateFunc) {
