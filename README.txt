@@ -3,6 +3,8 @@ constant-offset shadow stack transformation tool. An app framework has been
 provided, and you must add the following functionality:
 
 1. Allocate 10MB shadow stack at address real stack - 0xb00000 (2*10MB).
+   [Inject egalito_allocate_shadow_stack via libinject.so, and add a call
+   to this function in __libc_start_main i.e. at program start.]
 
 2. Add the following at every function prologue:
     push   %r11

@@ -44,8 +44,8 @@ void ShadowStackPass::addStackAllocationHook(Program *program) {
 
     auto block1 = sourceFunc->getChildren()->getIterable()->get(0);
 
-    // EXERCISE: Add call to egalito_allocate_shadow_stack by uncommenting the
-    // code below:
+    // EXERCISE 1a: Add call to egalito_allocate_shadow_stack by uncommenting
+    // the code below:
     //{
     //    ChunkMutator m(block1, true);
     //    m.prepend(hook);
@@ -71,7 +71,7 @@ Function *ShadowStackPass::makeViolationTarget(Module *module) {
     module->getFunctionList()->getChildren()->add(function);
     function->setParent(module->getFunctionList());
 
-    // EXERCISE: We are creating a new function from scratch and injecting it.
+    // EXERCISE 4: We are creating a new function from scratch and injecting it.
     // Please add a basic block with a single "ud2" instruction to the function.
     // ChunkMutator will be helpful.
 
@@ -156,7 +156,7 @@ void ShadowStackPass::visit(Instruction *instruction) {
 
 void ShadowStackPass::pushToShadowStack(Function *function) {
     ChunkAddInline ai({X86_REG_R11}, [] (unsigned int stackBytesAdded) {
-        // EXERCISE: Add the following instructions to each function prologue:
+        // EXERCISE 2: Add the following instructions to each function prologue:
         //     0:   41 53                   push   %r11
         //     2:   4c 8b 5c 24 08          mov    0x8(%rsp),%r11
         //     7:   4c 89 9c 24 00 00 50    mov    %r11,-0xb00000(%rsp)
@@ -181,7 +181,7 @@ void ShadowStackPass::pushToShadowStack(Function *function) {
 
 void ShadowStackPass::popFromShadowStack(Instruction *instruction) {
     ChunkAddInline ai({X86_REG_EFLAGS, X86_REG_R11}, [this] (unsigned int stackBytesAdded) {
-        // EXERCISE: Add the following instructions to each function epilogue:
+        // EXERCISE 3: Add the following instructions to each function epilogue:
         //                                   pushfd
         //      0:   41 53                   push   %r11
         //      2:   4c 8b 5c 24 08          mov    0x8(%rsp),%r11
