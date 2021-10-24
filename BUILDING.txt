@@ -1,0 +1,7 @@
+Please clone recursively so that you get egalito source. This Makefile
+builds egalito with custom flags (USE_KEYSTONE=1).
+
+Additional dependencies required:
+$ sudo apt install cmake  # otherwise keystone dep doesn't build
+
+A top-level `make' invocation will build everything.
