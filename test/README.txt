@@ -1,3 +1,5 @@
+TL;DR: try ./test1.sh and ./test2.sh.
+
 This directory contains a vulnerable program, vuln.c, with a buffer overrun.
 The attacker's goal is to use the buffer overrun to overwrite the instruction
 pointer and execute the function attacker_target. To build, run
