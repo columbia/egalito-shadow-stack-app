@@ -24,4 +24,4 @@ echo
 echo ========= Shadow-stack-hardened program
 perl vuln.pl ./vuln.ss
 
-echo "^^^ should have died with status 4"
+echo "^^^ please make this die with status 4"
