@@ -26,7 +26,7 @@ provided, and you must add the following functionality:
       ud2
 
 The various places that need code added are marked with EXERCISE, please
-grep for this. You can view the solution with "git diff solution".
+grep for this. You can view the solution with "git diff master solution".
 
 The code can be built on its own with "make". You can test it with
 
